@@ -1,1 +1,38 @@
-<p>car-list works!</p>
+<div>
+    <button class="btn-primary" (click)="show = !show">{{show ? 'Hide' : 'Add a Car'}}</button>
+    <div *ngIf="show">
+        <form (ngSubmit)="addCar()">
+            <div class='form-group'>
+                <label for="title">Make</label>
+                <input type="text" class="form-control" placeholder="Enter Make" id="make" required
+                    [(ngModel)]="makeValue" name="make">
+            </div>
+            <div class="form-group">
+                <label for="author">Model</label>
+                <input type="text" class="form-control" placeholder="Enter Model" id="model" required
+                    [(ngModel)]="modelValue" name="model">
+            </div>
+            <div class="form-group">
+                <label for="author">Engine Size</label>
+                <input type="text" class="form-control" placeholder="Enter Engine Size" id="engine" required
+                    [(ngModel)]="engineValue" name="engine">
+            </div>
+            <div class="form-group">
+                <label for="author">Transmission</label>
+                <input type="text" class="form-control" placeholder="Enter Transmission" id="transmission" required
+                    [(ngModel)]="transmissionValue" name="transmission">
+            </div>
+            <div class="form-group">
+                <label for="author">Image Link</label>
+                <input type="text" class="form-control" placeholder="Enter Link to Image" id="image" required
+                    [(ngModel)]="imageURLValue" name="image">
+            </div>
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class='container'>
+    <app-car *ngFor="let car of MyCars" [car]="car"></app-car>
+</div>

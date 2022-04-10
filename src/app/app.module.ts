@@ -5,11 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CarListComponent } from './car-list/car-list.component';
+import { CarComponent } from './car/car.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarListComponent
+    CarListComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,
