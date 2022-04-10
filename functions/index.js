@@ -5,14 +5,6 @@ const cors = require('cors')({ origin: true });
 
 const db = admin.database().ref('/car-project');
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
-
 const getCarsFromDatabase = (res) => {
     let cars = [];
     return db.on(
@@ -24,7 +16,8 @@ const getCarsFromDatabase = (res) => {
                     make: car.val().make,
                     model: car.val().model,
                     engine: car.val().engine,
-                    transmission: car.val().transmission
+                    transmission: car.val().transmission,
+                    imageURL: car.val().imageURL
                 });
             });
             res.status(200).json(cars);
@@ -49,7 +42,8 @@ exports.addCar = functions.https.onRequest((req, res) => {
         const model = req.query.model;
         const engine = req.query.engine;
         const transmission = req.query.transmission;
-        db.push({ make, model, engine, transmission });
+        const imageURL = req.query.imageURL;
+        db.push({ make, model, engine, transmission, imageURL });
         getCarsFromDatabase(res);
     });
 });
