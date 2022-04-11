@@ -1,20 +1,22 @@
 <div class='container'>
-    <div class='row border'>
-        <div class="col-3">
-            <button class="btn-danger" (click)="deleteCar(car.id)">Delete</button>
-            {{car.make}}
+    <li *ngFor="let car of MyCars">
+        <div class='row border'>
+            <div class="col-3">
+                <button class="btn-danger" (click)="deleteCar(car.id)">Delete</button>
+                {{car.make}}
+            </div>
+            <div class="col-3">
+                {{car.model}}
+            </div>
+            <div class="col-2">
+                {{car.engine}}
+            </div>
+            <div class="col-2">
+                {{car.transmission}}
+            </div>
+            <div class="col-4">
+                <img src="{{car.imageURL}}" [style.width.px]='carImageWidth' [style.height.px]='carImageHeight' />
+            </div>
         </div>
-        <div class="col-3">
-            {{car.model}}
-        </div>
-        <div class="col-2">
-            {{car.engine}}
-        </div>
-        <div class="col-2">
-            {{car.transmission}}
-        </div>
-        <div class="col-4">
-            <img src="{{car.imageURL}}" [style.width.px]='carImageWidth' />
-        </div>
-    </div>
+    </li>
 </div>

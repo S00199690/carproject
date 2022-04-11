@@ -43,9 +43,4 @@ export class CarListComponent implements OnInit {
     })
   }
 
-  deleteCar(id: string) {
-    return this.firebaseApiService.delCar(id).subscribe((data: {}) => {
-      this.MyCars = data;
-    })
-  }
 }

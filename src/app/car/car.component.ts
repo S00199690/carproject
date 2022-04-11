@@ -10,16 +10,28 @@ import { Car } from "../car";
 })
 export class CarComponent implements OnInit {
   @Input() car: Car;
-  carImageWidth: number = 300;
-  constructor(private _firebaseAPIService: FirebaseApiService) { }
+  MyCars: any = [];
+  carImageWidth: number = 450;
+  carImageHeight: number = 300;
+  constructor(private firebaseAPIService: FirebaseApiService) { }
 
-  ngOnInit() {
+   ngOnInit() {
+    this.loadCars();
   }
+
+  loadCars() {
+    return this.firebaseAPIService.getCars().subscribe((data: {}) => {
+      this.MyCars = data;
+    })
+  } 
 
   deleteCar(carId: string) {
     console.log(carId);
-    this._firebaseAPIService.delCar(carId);
+    return this.firebaseAPIService.delCar(carId).subscribe((data: {}) => {
+      this.MyCars = data;
+    })
   }
-
 }
+
+
 

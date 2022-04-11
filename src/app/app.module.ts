@@ -6,12 +6,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { CarListComponent } from './car-list/car-list.component';
 import { CarComponent } from './car/car.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarListComponent,
-    CarComponent
+    CarComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
